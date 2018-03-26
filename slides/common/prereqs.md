@@ -68,7 +68,7 @@ Misattributed to Benjamin Franklin
 
 - This is the stuff you're supposed to do!
 
-- Go to [container.training](http://container.training/) to view these slides
+- Go to [container.training](https://muracon18.bretfisher.com) to view these slides
 
 - Join the chat room: @@CHAT@@
 
