@@ -5,11 +5,17 @@
 * macOS: [Docker for Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac) (don't use brew)
 * Linux: [Docker CE for your Linux distribution](https://store.docker.com/search?offering=community&operating_system=linux&q=&type=edition) (don't use default pkg)
 
+.small[
+   (more install info in the [Docker install chapter](#toc-installing-docker))
+]
+
 Clone the MuraCon repo if you don't have it:
 
+.small[
   ```bash
   git clone --depth 1 https://github.com/blueriver/MuraCMS.git
-  ```
+```
+]
 
 <!-- Clone this workshop repo:   -->
 
@@ -17,6 +23,7 @@ Clone the MuraCon repo if you don't have it:
 
 Download images you'll need:
 
+.small[
   ```bash
   docker pull ubuntu
   docker pull blueriver/muracms
@@ -25,7 +32,9 @@ Download images you'll need:
   docker pull jpetazzo/trainingwheels
   docker pull python
   docker pull ruby:2.1
+  docker pull ortussolutions/commandbox
   ```
+]
 
 ---
 
