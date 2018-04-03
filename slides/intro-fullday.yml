@@ -13,7 +13,7 @@ exclude:
 chapters:
 - common/title.md
 - logistics.md
-- intro/intro.md
+# - intro/intro.md
 - common/about-slides.md
 - common/toc.md
 - - intro/Docker_Overview.md
@@ -40,6 +40,7 @@ chapters:
 - - intro/Local_Development_Workflow.md
   - intro/Working_With_Volumes.md
   - intro/Compose_For_Dev_Stacks.md
+- - intro/mura.md
   # - intro/Advanced_Dockerfiles.md
   - common/thankyou.md
   - intro/links.md
