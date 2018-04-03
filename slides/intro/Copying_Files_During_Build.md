@@ -37,6 +37,8 @@ int main () {
 
 Let's create a new directory, and put this file in there.
 
+Make sure it's in your user path e.g. `/Users/name/../dockerbuild` on Mac/Win.
+
 Then we will write the Dockerfile.
 
 ---
@@ -51,8 +53,7 @@ Then we will use `COPY` to place the source file into the container.
 
 ```bash
 FROM ubuntu
-RUN apt-get update
-RUN apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential
 COPY hello.c /
 RUN make hello
 CMD /hello

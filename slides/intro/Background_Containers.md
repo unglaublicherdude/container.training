@@ -37,7 +37,7 @@ Fri Feb 20 00:28:55 UTC 2015
 ```
 
 * This container will run forever.
-* To stop it, press `^C`.
+* To stop it, press `^C` (except Windows, which will let it keep running in most shells)
 * Docker has automatically downloaded the image `jpetazzo/clock`.
 * This image is a user image, created by `jpetazzo`.
 * We will hear more about user images (and other types of images) later.

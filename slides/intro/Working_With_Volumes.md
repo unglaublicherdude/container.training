@@ -13,8 +13,6 @@ At the end of this section, you will be able to:
 
 * Create containers holding volumes.
 
-* Share volumes across containers.
-
 * Share a host directory with one or many containers.
 
 ---
@@ -181,27 +179,7 @@ $ curl localhost:1234
 
 ---
 
-## Using a volume in another container
-
-* We will make changes to the volume from another container.
-
-* In this example, we will run a text editor in the other container.
-
-  (But this could be a FTP server, a WebDAV server, a Git receiver...)
-
-Let's start another container using the `webapps` volume.
-
-```bash
-$ docker run -v webapps:/webapps -w /webapps -ti alpine vi ROOT/index.jsp
-```
-
-Vandalize the page, save, exit.
-
-Then run `curl localhost:1234` again to see your changes.
-
----
-
-## Managing volumes explicitly
+## Managing volumes explicitly with "bind-mounts"
 
 In some cases, you want a specific directory on the host to be mapped
 inside the container:
@@ -371,42 +349,12 @@ $ docker inspect <yourContainerID>
 
 ---
 
-## Sharing a single file
-
-The same `-v` flag can be used to share a single file (instead of a directory).
-
-One of the most interesting examples is to share the Docker control socket.
-
-```bash
-$ docker run -it -v /var/run/docker.sock:/var/run/docker.sock docker sh
-```
-
-From that container, you can now run `docker` commands communicating with
-the Docker Engine running on the host. Try `docker ps`!
-
-.warning[Since that container has access to the Docker socket, it
-has root-like access to the host.]
-
----
-
 ## Volume plugins
 
 You can install plugins to manage volumes backed by particular storage systems,
-or providing extra features. For instance:
+or providing extra features. Find many at https://store.docker.com under plugins. For instance:
 
-* [dvol](https://github.com/ClusterHQ/dvol) - allows to commit/branch/rollback volumes;
-* [Flocker](https://clusterhq.com/flocker/introduction/), [REX-Ray](https://github.com/emccode/rexray) - create and manage volumes backed by an enterprise storage system (e.g. SAN or NAS), or by cloud block stores (e.g. EBS);
-* [Blockbridge](http://www.blockbridge.com/), [Portworx](http://portworx.com/) - provide distributed block store for containers;
+* [REX-Ray](https://github.com/emccode/rexray) - create and manage volumes backed by an shared storage (e.g. SAN or NAS), or by cloud block stores (e.g. EBS, EFS, S3);
+* [Portworx](http://portworx.com/) - provide distributed block store for containers;
 * and much more!
 
----
-
-## Section summary
-
-We've learned how to:
-
-* Create and manage volumes.
-
-* Share volumes across containers.
-
-* Share a host directory with one or many containers.

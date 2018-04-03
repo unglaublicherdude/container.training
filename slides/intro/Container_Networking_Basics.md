@@ -28,7 +28,7 @@ We will also explain the different network models used by Docker.
 Run the Docker Hub image `nginx`, which contains a basic web server:
 
 ```bash
-$ docker run -d -P nginx
+$ docker run -d -p 3000:80 nginx
 66b1ce719198711292c8f34f84a7b68c3876cf9f67015e752b94e189d35a204e
 ```
 
@@ -36,8 +36,7 @@ $ docker run -d -P nginx
 
 * `-d` tells Docker to run the image in the background.
 
-* `-P` tells Docker to make this service reachable from other computers.
-  <br/>(`-P` is the short version of `--publish-all`.)
+* `-p` tells Docker to "publish" a port so it's reachable outside host.
 
 But, how do we connect to our web server now?
 
@@ -49,14 +48,14 @@ We will use `docker ps`:
 
 ```bash
 $ docker ps
-CONTAINER ID  IMAGE  ...  PORTS                                          ...
-e40ffb406c9e  nginx  ...  0.0.0.0:32769->80/tcp, 0.0.0.0:32768->443/tcp  ...
+CONTAINER ID  IMAGE  ...  PORTS                ...
+e40ffb406c9e  nginx  ...  0.0.0.0:3000->80/tcp  ...
 ```
 
 
-* The web server is running on ports 80 and 443 inside the container.
+* The web server is running on ports 80 inside the container.
 
-* Those ports are mapped to ports 32769 and 32768 on our Docker host.
+* This port is mapped to port 3000 on our Docker host.
 
 We will explain the whys and hows of this port mapping.
 
@@ -66,8 +65,9 @@ But first, let's make sure that everything works properly.
 
 ## Connecting to our web server (GUI)
 
-Point your browser to the IP address of your Docker host, on the port
-shown by `docker ps` for container port 80.
+If on Docker for Mac/Windows, or a Linux desktop, go to `http://localhost:3000`
+
+If on Docker Toolbox, try `http://192.168.99.100:3000`
 
 ![Screenshot](images/welcome-to-nginx.png)
 
@@ -81,7 +81,7 @@ Make sure to use the right port number if it is different
 from the example below:
 
 ```bash
-$ curl localhost:32769
+$ curl localhost:3000
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,26 +95,13 @@ $ curl localhost:32769
 
 * We are out of IPv4 addresses.
 
-* Containers cannot have public IPv4 addresses.
+* Containers cannot have public IPv4 addresses by default.
 
 * They have private addresses.
 
 * Services have to be exposed port by port.
 
 * Ports have to be mapped to avoid conflicts.
-
----
-
-## Finding the web server port in a script
-
-Parsing the output of `docker ps` would be painful.
-
-There is a command to help us:
-
-```bash
-$ docker port <containerID> 80
-32769
-```
 
 ---
 
@@ -137,26 +124,6 @@ Note: the convention is `port-on-host:port-on-container`.
 
 ---
 
-## Plumbing containers into your infrastructure
-
-There are many ways to integrate containers in your network.
-
-* Start the container, letting Docker allocate a public port for it.
-  <br/>Then retrieve that port number and feed it to your configuration.
-
-* Pick a fixed port number in advance, when you generate your configuration.
-  <br/>Then start your container by setting the port numbers manually.
-
-* Use a network plugin, connecting your containers with e.g. VLANs, tunnels...
-
-* Enable *Swarm Mode* to deploy across a cluster.
-  <br/>The container will then be reachable through any node of the cluster.
-
-When using Docker through an extra management layer like Mesos or Kubernetes,
-these will usually provide their own mechanism to expose containers.
-
----
-
 ## Finding the container's IP address
 
 We can use the `docker inspect` command to find the IP address of the
@@ -172,20 +139,6 @@ $ docker inspect --format '{{ .NetworkSettings.IPAddress }}' <yourContainerID>
 
 * Here, we provide it with a format string to extract exactly the
   private IP address of the container.
-
----
-
-## Pinging our container
-
-We can test connectivity to the container using the IP address we've
-just discovered. Let's see this now by using the `ping` tool.
-
-```bash
-$ ping <ipAddress>
-64 bytes from <ipAddress>: icmp_req=1 ttl=64 time=0.085 ms
-64 bytes from <ipAddress>: icmp_req=2 ttl=64 time=0.085 ms
-64 bytes from <ipAddress>: icmp_req=3 ttl=64 time=0.085 ms
-```
 
 ---
 

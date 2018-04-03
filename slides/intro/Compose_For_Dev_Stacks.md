@@ -45,20 +45,13 @@ This is how you work with Compose:
 
 * When containers are running in the foreground, their aggregated output is shown.
 
-Before diving in, let's see a small example of Compose in action.
-
----
-
-## Compose in action
-
-![composeup](images/composeup.gif)
-
 ---
 
 ## Checking if Compose is installed
 
-If you are using the official training virtual machines, Compose has been
-pre-installed.
+If you are using Docker for Mac/Windows or the Toolbox, docker-compose comes with them.
+
+If you're on Linux desktop/server, you'll need to get the lastest at https://github.com/docker/compose/releases
 
 You can always check that it is installed by running:
 
@@ -137,20 +130,22 @@ services:
 
 ## Compose file versions
 
-Version 1 directly has the various containers (`www`, `redis`...) at the top level of the  file.
+Version 1 (or no version) is legacy and shouldn't be used.
 
 Version 2 has multiple sections:
 
-* `version` is mandatory and should be `"2"`.
+* `version` is mandatory and should be `"2"` or `"2.x"`.
 
-* `services` is mandatory and corresponds to the content of the version 1 format.
+* `services` is mandatory. A service is one or more replicas of the same image running as containers.
 
 * `networks` is optional and indicates to which networks containers should be connected.
-  <br/>(By default, containers will be connected on a private, per-app network.)
+  <br/>(By default, containers will be connected on a private, per-compose-file network.)
 
 * `volumes` is optional and can define volumes to be used and/or shared by the containers.
 
 Version 3 adds support for deployment options (scaling, rolling updates, etc.)
+
+Docker Docs has good info on versions https://docs.docker.com/compose/compose-file/
 
 ---
 
@@ -167,8 +162,6 @@ Each service in the YAML file must contain either `build`, or `image`.
 The other parameters are optional.
 
 They encode the parameters that you would typically add to `docker run`.
-
-Sometimes they have several minor improvements.
 
 ---
 
@@ -270,6 +263,8 @@ the volumes it was using previously.
 
 This makes it easy to upgrade a stateful service, by pulling its
 new image and just restarting your stack with Compose.
+
+Use `docker-compose down -v` to remove everything including volumes.
 
 ---
 

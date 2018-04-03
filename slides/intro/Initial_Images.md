@@ -47,12 +47,56 @@ In this section, we will explain:
 ## Example for a Java webapp
 
 * CentOS base layer
-* Packages and configuration files added by our local IT
 * JRE
 * Tomcat
 * Our application's dependencies
 * Our application code and assets
 * Our application configuration
+
+---
+
+## Example in layers
+
+<table>
+  <tr>
+    <td>CentOS</td>
+    <td>-----></td>
+    <td>Base "FROM" Layer</td>
+  </tr>
+  <tr>
+    <td>JRE</td>
+    <td>-----></td>
+    <td>Layer 2</td>
+  </tr>
+  <tr>
+    <td>Tomcat</td>
+    <td>-----></td>
+    <td>Layer 3</td>
+  </tr>
+  <tr>
+    <td>App dependencies</td>
+    <td>-----></td>
+    <td>Layer 4</td>
+  </tr>
+</table>
+
+etc.
+
+---
+
+class: pic
+
+## Example in pictures
+
+![layers](images/container-layers.jpg)
+
+---
+
+class: pic
+
+## Example of many containers using same images
+
+![layers](images/sharing-layers.jpg)
 
 ---
 
@@ -68,25 +112,13 @@ In this section, we will explain:
 
 * `docker run` starts a container from a given image.
 
-Let's give a couple of metaphors to illustrate those concepts.
-
 ---
 
-## Image as stencils
+## How do we get images?
 
-Images are like templates or stencils that you can create containers from.
+* We download (aka pull) them from a image "registry".
 
-![stencil](images/stenciling-wall.jpg)
-
----
-
-## Object-oriented programming
-
-* Images are conceptually similar to *classes*.
-
-* Layers are conceptually similar to *inheritance*.
-
-* Containers are conceptually similar to *instances*.
+* We make them ourselves.
 
 ---
 
@@ -94,56 +126,26 @@ Images are like templates or stencils that you can create containers from.
 
 If an image is read-only, how do we change it?
 
-* We don't.
-
-* We create a new container from that image.
-
-* Then we make changes to that container.
- 
-* When we are satisfied with those changes, we transform them into a new layer.
-
-* A new image is created by stacking the new layer on top of the old image.
+* We don't change existing images, we create new ones.
 
 ---
 
-## A chicken-and-egg problem
+## Creating images
 
-* The only way to create an image is by "freezing" a container.
+`docker build` (**used 99% of time**)
 
-* The only way to create a container is by instanciating an image.
-
-* Help!
-
----
-
-## Creating the first images
-
-There is a special empty image called `scratch`. 
-
-* It allows to *build from scratch*.
-
-The `docker import` command loads a tarball into Docker.
-
-* The imported tarball becomes a standalone image.
-* That new image has a single layer.
-
-Note: you will probably never have to do this yourself.
-
----
-
-## Creating other images
+* Performs a repeatable build sequence.
+* Uses a `Dockerfile` for build instructions.
+* This is the preferred method!
 
 `docker commit`
 
 * Saves all the changes made to a container into a new layer.
 * Creates a new image (effectively a copy of the container).
 
-`docker build`
+(we can also `docker import` but that's also rarely used)
 
-* Performs a repeatable build sequence.
-* This is the preferred method!
-
-We will explain both methods in a moment.
+We'll cover building images in a minute!
 
 ---
 
@@ -170,15 +172,17 @@ Let's explain each of them.
 ## Root namespace
 
 The root namespace is for official images. They are put there by Docker Inc.,
-but they are generally authored and maintained by third parties.
+but they are generally authored and maintained by trusted third parties.
 
 Those images include:
 
-* Small, "swiss-army-knife" images like busybox.
+* Small, "swiss-army-knife" images like `busybox`.
 
-* Distro images to be used as bases for your builds, like ubuntu, fedora...
+* Distro images to be used as bases for your builds, like `ubuntu`, `fedora`...
 
-* Ready-to-use components and services, like redis, postgresql...
+* Ready-to-use components and services, like `redis`, `postgresql`...
+
+* Over 130 at this point!
 
 ---
 
@@ -186,23 +190,11 @@ Those images include:
 
 The user namespace holds images for Docker Hub users and organizations.
 
-For example:
+For example: `jpetazzo/clock`
 
-```bash
-jpetazzo/clock
-```
+  * The Docker Hub user is: `jpetazzo`
 
-The Docker Hub user is:
-
-```bash
-jpetazzo
-```
-
-The image name is:
-
-```bash
-clock
-```
+  * The image name is: `clock`
 
 ---
 
@@ -260,30 +252,6 @@ jpetazzo/clock   latest    12068b93616f   12 months ago   2.433 MB
 
 ---
 
-## Searching for images
-
-We cannot list *all* images on a remote registry, but
-we can search for a specific keyword:
-
-```bash
-$ docker search marathon
-NAME                     DESCRIPTION                     STARS  OFFICIAL  AUTOMATED
-mesosphere/marathon      A cluster-wide init and co...   105              [OK]
-mesoscloud/marathon      Marathon                        31               [OK]
-mesosphere/marathon-lb   Script to update haproxy b...   22               [OK]
-tobilg/mongodb-marathon  A Docker image to start a ...   4                [OK]
-```
-
-
-* "Stars" indicate the popularity of the image.
-
-* "Official" images are those in the root namespace.
-
-* "Automated" images are built automatically by the Docker Hub.
-  <br/>(This means that their build recipe is always available.)
-
----
-
 ## Downloading images
 
 There are two ways to download images.
@@ -297,18 +265,18 @@ There are two ways to download images.
 ## Pulling an image
 
 ```bash
-$ docker pull debian:jessie
-Pulling repository debian
-b164861940b8: Download complete 
-b164861940b8: Pulling image (jessie) from debian 
-d1881793a057: Download complete 
+$ docker pull alpine:3.7
+3.7: Pulling from library/alpine
+ff3a5c916c92: Pull complete
+Digest: sha256:7df6db5aa61ae9480f52f0b3a06a140ab98d427f86d8d5de0bedab9b8df6b1c0
+Status: Downloaded newer image for alpine:3.7
 ```
 
 * As seen previously, images are made up of layers.
 
 * Docker has downloaded all the necessary layers.
 
-* In this example, `:jessie` indicates which exact version of Debian
+* In this example, `:3.7` indicates which exact version of Debian
   we would like.
 
   It is a *version tag*.
@@ -341,6 +309,7 @@ Do specify tags:
 * When going to production.
 * To ensure that the same version will be used everywhere.
 * To ensure repeatability later.
+* **ProTip: Never use `:latest` for anything beyond local machine**
 
 ---
 

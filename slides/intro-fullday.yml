@@ -8,6 +8,7 @@ chat: "[Gitter](https://gitter.im/BretFisher/muracon18)"
 
 exclude:
 - self-paced
+- extra-details
 
 chapters:
 - common/title.md
@@ -21,24 +22,24 @@ chapters:
   - intro/Installing_Docker.md
   - intro/First_Containers.md
   - intro/Background_Containers.md
-  - intro/Start_And_Attach.md
+  # - intro/Start_And_Attach.md
 - - intro/Initial_Images.md
-  - intro/Building_Images_Interactively.md
+  # - intro/Building_Images_Interactively.md
   - intro/Building_Images_With_Dockerfiles.md
   - intro/Cmd_And_Entrypoint.md
   - intro/Copying_Files_During_Build.md
-  - intro/Multi_Stage_Builds.md
+  # - intro/Multi_Stage_Builds.md
   - intro/Publishing_To_Docker_Hub.md
   - intro/Dockerfile_Tips.md
 - - intro/Naming_And_Inspecting.md
   - intro/Container_Networking_Basics.md
-  - intro/Network_Drivers.md
+  # - intro/Network_Drivers.md
   - intro/Container_Network_Model.md
   #- intro/Connecting_Containers_With_Links.md
-  - intro/Ambassadors.md
+  # - intro/Ambassadors.md
 - - intro/Local_Development_Workflow.md
   - intro/Working_With_Volumes.md
   - intro/Compose_For_Dev_Stacks.md
-  - intro/Advanced_Dockerfiles.md
+  # - intro/Advanced_Dockerfiles.md
   - common/thankyou.md
   - intro/links.md

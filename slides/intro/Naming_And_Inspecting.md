@@ -70,14 +70,6 @@ This lets us enforce unicity of a given resource.
 
 ---
 
-## Renaming containers
-
-* You can rename containers with `docker rename`.
-
-* This allows you to "free up" a name without destroying the associated container.
-
----
-
 ## Inspecting a container
 
 The `docker inspect` command will output a very detailed JSON map.
@@ -92,41 +84,3 @@ $ docker inspect <containerID>
 
 There are multiple ways to consume that information.
 
----
-
-## Parsing JSON with the Shell
-
-* You *could* grep and cut or awk the output of `docker inspect`.
-
-* Please, don't.
-
-* It's painful.
-
-* If you really must parse JSON from the Shell, use JQ! (It's great.)
-
-```bash
-$ docker inspect <containerID> | jq .
-```
-
-* We will see a better solution which doesn't require extra tools.
-
----
-
-## Using `--format`
-
-You can specify a format string, which will be parsed by 
-Go's text/template package.
-
-```bash
-$ docker inspect --format '{{ json .Created }}' <containerID>
-"2015-02-24T07:21:11.712240394Z"
-```
-
-* The generic syntax is to wrap the expression with double curly braces.
-
-* The expression starts with a dot representing the JSON object.
-
-* Then each field or member can be accessed in dotted notation syntax.
-
-* The optional `json` keyword asks for valid JSON output.
-  <br/>(e.g. here it adds the surrounding double-quotes.)

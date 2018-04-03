@@ -54,8 +54,7 @@ Of course, you can use any other editor of your choice.
 
 ```dockerfile
 FROM ubuntu
-RUN apt-get update
-RUN apt-get install figlet
+RUN apt-get update && apt-get -y install figlet
 ```
 
 * `FROM` indicates the base image for our build.
@@ -98,11 +97,7 @@ Sending build context to Docker daemon 2.048 kB
 Sending build context to Docker daemon 
 Step 0 : FROM ubuntu
  ---> e54ca5efa2e9
-Step 1 : RUN apt-get update
- ---> Running in 840cb3533193
- ---> 7257c37726a1
-Removing intermediate container 840cb3533193
-Step 2 : RUN apt-get install figlet
+Step 1 : RUN apt-get install && apt-get -y install figlet
  ---> Running in 2b44df762a2f
  ---> f9e8f1642759
 Removing intermediate container 2b44df762a2f
@@ -134,7 +129,7 @@ Sending build context to Docker daemon 2.048 kB
 ## Executing each step
 
 ```bash
-Step 1 : RUN apt-get update
+Step 1 : RUN apt-get install && apt-get -y install figlet
  ---> Running in 840cb3533193
 (...output of the RUN command...)
  ---> 7257c37726a1
@@ -175,7 +170,7 @@ You can force a rebuild with `docker build --no-cache ...`.
 
 ## Running the image
 
-The resulting image is not different from the one produced manually.
+Let's check that this image produces a container with the proper tool installed.
 
 ```bash
 $ docker run -ti figlet
@@ -212,73 +207,4 @@ f9e8f1642759  About an hour ago  /bin/sh -c apt-get install fi  1.627 MB
 <missing>     4 days ago         /bin/sh -c #(nop) ADD file:b   187.8 MB
 ```
 
----
 
-## Introducing JSON syntax
-
-Most Dockerfile arguments can be passed in two forms:
-
-* plain string:
-  <br/>`RUN apt-get install figlet`
-
-* JSON list:
-  <br/>`RUN ["apt-get", "install", "figlet"]`
-
-We are going to change our Dockerfile to see how it affects the resulting image.
-
----
-
-## Using JSON syntax in our Dockerfile
-
-Let's change our Dockerfile as follows!
-
-```dockerfile
-FROM ubuntu
-RUN apt-get update
-RUN ["apt-get", "install", "figlet"]
-```
-
-Then build the new Dockerfile.
-
-```bash
-$ docker build -t figlet .
-```
-
----
-
-## JSON syntax vs string syntax
-
-Compare the new history:
-
-```bash
-$ docker history figlet
-IMAGE         CREATED            CREATED BY                     SIZE
-27954bb5faaf  10 seconds ago     apt-get install figlet         1.627 MB
-7257c37726a1  About an hour ago  /bin/sh -c apt-get update      21.58 MB
-07c86167cdc4  4 days ago         /bin/sh -c #(nop) CMD ["/bin   0 B
-<missing>     4 days ago         /bin/sh -c sed -i 's/^#\s*\(   1.895 kB
-<missing>     4 days ago         /bin/sh -c echo '#!/bin/sh'    194.5 kB
-<missing>     4 days ago         /bin/sh -c #(nop) ADD file:b   187.8 MB
-```
-
-* JSON syntax specifies an *exact* command to execute.
-
-* String syntax specifies a command to be wrapped within `/bin/sh -c "..."`.
-
----
-
-## When to use JSON syntax and string syntax
-
-* String syntax:
-
-  * is easier to write
-  * interpolates environment variables and other shell expressions
-  * creates an extra process (`/bin/sh -c ...`) to parse the string
-  * requires `/bin/sh` to exist in the container
-
-* JSON syntax:
-
-  * is harder to write (and read!)
-  * passes all arguments without extra processing
-  * doesn't create an extra process
-  * doesn't require `/bin/sh` to exist in the container

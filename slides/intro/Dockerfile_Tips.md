@@ -68,8 +68,8 @@ Adding the dependencies as a separate step means that Docker can cache more effi
 ```bash
 FROM python
 MAINTAINER Docker Education Team <education@docker.com>
-COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install -qr /tmp/requirements.txt
+COPY ./requirements.txt /tmp/requirements.txt  # we added this line
+RUN pip install -qr /tmp/requirements.txt      # we moved this line up
 COPY . /src/
 WORKDIR /src
 EXPOSE 5000
