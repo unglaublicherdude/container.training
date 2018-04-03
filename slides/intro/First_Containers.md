@@ -110,28 +110,9 @@ Beautiful! .emoji[😍]
 
 ---
 
-## Counting packages in the container
-
-Let's check how many packages are installed there.
-
-```bash
-root@04c0bb0a6c07:/# dpkg -l | wc -l
-190
-```
-
-* `dpkg -l` lists the packages installed in our container
-
-* `wc -l` counts them
-
-How many packages do we have on our host?
-
----
-
-## Counting packages on the host
+## Try running figlet on host
 
 Exit the container by logging out of the shell, like you would usually do.
-
-(E.g. with `^D` or `exit`)
 
 ```bash
 root@04c0bb0a6c07:/# exit
@@ -139,17 +120,15 @@ root@04c0bb0a6c07:/# exit
 
 Now, try to:
 
-* run `dpkg -l | wc -l`. How many packages are installed?
-
 * run `figlet`. Does that work?
 
 ---
 
 ## Host and containers are independent things
 
-* We ran an `ubuntu` container on an `ubuntu` host.
+* We ran an `ubuntu` container on an `linux/windows/mac` host.
 
-* But they have different, independent packages.
+* But they have different, independent packages/apps.
 
 * Installing something on the host doesn't expose it to the container.
 
