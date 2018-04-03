@@ -6,7 +6,7 @@
 * Linux: [Docker CE for your Linux distribution](https://store.docker.com/search?offering=community&operating_system=linux&q=&type=edition) (don't use default pkg)
 
 .small[
-   (more install info in the [Docker install chapter](#toc-installing-docker))
+(more install info in the [Docker install chapter](#toc-installing-docker))
 ]
 
 Clone the MuraCon repo if you don't have it:
@@ -21,7 +21,7 @@ Clone the MuraCon repo if you don't have it:
 
 <!-- `git clone --depth 1 --branch muracon18 https://github.com/bretfisher/muracon18.git` -->
 
-Download images you'll need:
+Download images you'll need (totaling 4.3GB):
 
 .small[
   ```bash
