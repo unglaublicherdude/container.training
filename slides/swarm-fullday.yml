@@ -2,8 +2,8 @@ title: |
   Container Orchestration
   with Docker and Swarm
 
-chat: "[Slack](https://dockercommunity.slack.com/messages/C7GKACWDV)"
-#chat: "[Gitter](https://gitter.im/jpetazzo/workshop-yyyymmdd-city)"
+# chat: "[Slack](https://dockercommunity.slack.com/messages/C7GKACWDV)"
+chat: "[Gitter](https://gitter.im/BretFisher/gotochgo18)"
 
 exclude:
 - self-paced

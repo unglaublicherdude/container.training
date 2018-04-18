@@ -1,8 +1,8 @@
 ## Brand new versions!
 
-- Engine 17.12
-- Compose 1.17
-- Machine 0.13
+- Engine 18.04
+- Compose 1.21
+- Machine 0.14
 
 .exercise[
 
@@ -17,7 +17,7 @@
 
 ---
 
-## Wait, what, 17.12 ?!?
+## Wait, what, 18.04 ?!?
 
 --
 
@@ -27,7 +27,7 @@
 
 - Every quarter, there is a new "stable" release
 
-- Docker CE releases are maintained 4+ months
+- Docker CE *stable* releases are maintained 4+ months
 
 - Docker EE releases are maintained 12+ months
 
@@ -79,7 +79,7 @@ class: pic
 
 ---
 
-## What was added when?
+## What was added when (affecting Swarm)?
 
 ||||
 | ---- | ----- | --- |
@@ -89,8 +89,12 @@ class: pic
 | 2016 |  1.12 | Swarm mode, routing mesh, encrypted networking, healthchecks
 | 2017 |  1.13 | Stacks, attachable overlays, image squash and compress
 | 2017 |  1.13 | Windows Server 2016 Swarm mode
-| 2017 | 17.03 | Secrets
+| 2017 | 17.03 | Secrets, encrypted Raft
 | 2017 | 17.04 | Update rollback, placement preferences (soft constraints)
-| 2017 | 17.05 | Multi-stage image builds, service logs
-| 2017 | 17.06 | Swarm configs, node/service events
+| 2017 | 17.06 | Swarm configs, node/service events, multi-stage build, service logs
 | 2017 | 17.06 | Windows Server 2016 Swarm overlay networks, secrets
+| 2017 | 17.09 | ADD/COPY chown, start\_period, stop-signal, overlay2 default
+| 2017 | 17.12 | containerd, Hyper-V isolation, Windows routing mesh
+| 2018 | 18.03 | Templates for secrets/configs, multi-yaml stacks, LCOW
+| 2018 | 18.03 | Stack deploy to Kubernetes, docker trust, tmpfs, manifest cli
+

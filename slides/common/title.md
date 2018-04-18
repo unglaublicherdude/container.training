@@ -8,8 +8,8 @@ class: title, self-paced
 
 class: title, in-person
 
-Introduction to Containers<br/>
-for Local Dev With Mura<br/>
+Build Container Orchestration<br/>
+with Docker Swarm<br/>
 <br/></br>
 
 .footnote[
@@ -19,5 +19,5 @@ for Local Dev With Mura<br/>
 *Don't stream videos or download big files during the workshop.*<br/>
 *Thank you!*
 
-**Slides: https://muracon18.bretfisher.com**
+**Slides: https://gotochgo18.bretfisher.com**
 ]
