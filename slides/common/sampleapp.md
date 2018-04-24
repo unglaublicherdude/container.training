@@ -1,16 +1,16 @@
 # Our sample application
 
 - Visit the GitHub repository with all the materials of this workshop:
-  <br/>https://github.com/jpetazzo/container.training
+  <br/>https://github.com/bretfisher/container.training
 
 - The application is in the [dockercoins](
-  https://github.com/jpetazzo/container.training/tree/master/dockercoins)
+  https://github.com/bretfisher/container.training/tree/master/dockercoins)
   subdirectory
 
 - Let's look at the general layout of the source code:
 
   there is a Compose file [docker-compose.yml](
-  https://github.com/jpetazzo/container.training/blob/master/dockercoins/docker-compose.yml) ...
+  https://github.com/bretfisher/container.training/blob/master/dockercoins/docker-compose.yml) ...
 
   ... and 4 other services, each in its own directory:
 
@@ -138,7 +138,7 @@ fi
 
 - Clone the repository on `node1`:
   ```bash
-  git clone git://github.com/jpetazzo/container.training
+  git clone git://github.com/bretfisher/container.training
   ```
 
 ]

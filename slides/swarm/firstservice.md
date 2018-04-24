@@ -237,7 +237,7 @@ class: extra-details
 
 - Create an ElasticSearch service (and give it a name while we're at it):
   ```bash
-  docker service create --name search --publish 9200:9200 --replicas 7 \
+  docker service create --name search --publish 9200:9200 --replicas 4 \
          elasticsearch`:2`
   ```
 
@@ -267,7 +267,7 @@ The latest version of the ElasticSearch image won't start without mandatory conf
 
 ---
 
-class: extra-details
+class: extra-details, pic
 
 ![diagram showing what happens during docker service create, courtesy of @aluzzardi](images/docker-service-create.svg)
 
@@ -378,6 +378,13 @@ class: btw-labels
   - add a specific label starting with `com.docker.ucp.mesh.http` to your services
 
   - labels are detected automatically and dynamically update the configuration
+
+- Two common open source "reverse proxy" options
+
+  - [Traefik](https://traefik.io/) - uses NGINX, popular, requires proxy be on managers, needs DB for HA
+  
+  - [Docker Flow Proxy](http://proxy.dockerflow.com/) - uses HAProxy, made for 
+  Swarm by Docker Captian [@vfarcic](https://twitter.com/vfarcic)
 
 ---
 

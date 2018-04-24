@@ -38,7 +38,7 @@ chapters:
   - swarm/swarmready.md
   - swarm/compose2swarm.md
   - swarm/updatingservices.md
-  #- swarm/rollingupdates.md
+  - swarm/rollingupdates.md
   - swarm/healthchecks.md
 - - swarm/operatingswarm.md
   - swarm/netshoot.md
