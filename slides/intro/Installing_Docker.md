@@ -50,6 +50,28 @@ We can arbitrarily distinguish:
 
 ---
 
+class: extra-details
+
+## Docker Inc. packages vs distribution packages
+
+* Docker Inc. releases new versions monthly (edge) and quarterly (stable)
+
+* Releases are immediately available on Docker Inc.'s package repositories
+
+* Linux distros don't always update to the latest Docker version
+
+  (Sometimes, updating would break their guidelines for major/minor upgrades)
+
+* Sometimes, some distros have carried packages with custom patches
+
+* Sometimes, these patches added critical security bugs ☹
+
+* Installing through Docker Inc.'s repositories is a bit of extra work …
+
+  … but it is generally worth it!
+
+---
+
 ## Installing Docker on macOS and Windows
 
 * On macOS, the recommended method is to use *Docker for Mac*:
@@ -65,6 +87,21 @@ We can arbitrarily distinguish:
   https://docs.docker.com/toolbox/toolbox_install_windows/
 
 * On Windows Server 2016+, you can install the native engine or Docker for Windows
+
+---
+
+## Running Docker on macOS and Windows
+
+When you execute `docker version` from the terminal:
+
+* the CLI connects to the Docker Engine over a standard socket,
+* the Docker Engine is, in fact, running in a VM,
+* ... but the CLI doesn't know or care about that,
+* the CLI sends a request using the REST API,
+* the Docker Engine in the VM processes the request,
+* the CLI gets the response and displays it to you.
+
+All communication with the Docker Engine happens over the API.
 
   https://docs.docker.com/install/windows/docker-ee/
 

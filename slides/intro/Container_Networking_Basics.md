@@ -91,6 +91,31 @@ $ curl localhost:3000
 
 ---
 
+## How does Docker know which port to map?
+
+* There is metadata in the image telling "this image has something on port 80".
+
+* We can see that metadata with `docker inspect`:
+
+```bash
+$ docker inspect nginx --format {{.Config.ExposedPorts}}
+map[80/tcp:{}]
+```
+
+* This metadata was set in the Dockerfile, with the `EXPOSE` keyword.
+
+* We can see that with `docker history`:
+
+```bash
+$ docker history nginx
+IMAGE               CREATED             CREATED BY
+7f70b30f2cc6        11 days ago         /bin/sh -c #(nop)  CMD ["nginx" "-g" "…
+<missing>           11 days ago         /bin/sh -c #(nop)  STOPSIGNAL [SIGTERM]
+<missing>           11 days ago         /bin/sh -c #(nop)  EXPOSE 80/tcp
+```
+
+---
+
 ## Why are we mapping ports?
 
 * We are out of IPv4 addresses.
@@ -102,6 +127,19 @@ $ curl localhost:3000
 * Services have to be exposed port by port.
 
 * Ports have to be mapped to avoid conflicts.
+
+---
+
+## Finding the web server port in a script
+
+Parsing the output of `docker ps` would be painful.
+
+There is a command to help us:
+
+```bash
+$ docker port <containerID> 80
+32768
+```
 
 ---
 

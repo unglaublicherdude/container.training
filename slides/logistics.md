@@ -14,4 +14,4 @@
 
 - Feel free to interrupt for questions at any time, but some we'll leave to the breaks to answer
 
-- Live feedback, questions, help on @@CHAT@@
+- Live feedback, questions, help: @@CHAT@@

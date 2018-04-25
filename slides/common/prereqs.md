@@ -20,26 +20,6 @@
 
 ---
 
-class: extra-details
-
-## Extra details
-
-- This slide has a little magnifying glass in the top left corner
-
-- This magnifiying glass indicates slides that provide extra details
-
-- Feel free to skip them if:
-
-  - you are in a hurry
-
-  - you are new to this and want to avoid cognitive overload
-
-  - you want only the most essential information
-
-- You can review these slides another time if you want, they'll be waiting for you ☺
-
----
-
 class: title
 
 *Tell me and I forget.*
@@ -145,7 +125,50 @@ class: in-person
   works pretty well
 
 - Nice-to-have: [Mosh](https://mosh.org/) instead of SSH, if your internet connection tends to lose packets
-  <br/>(available with `(apt|yum|brew) install mosh`; then connect with `mosh user@host`)
+
+---
+
+class: in-person, extra-details
+
+## What is this Mosh thing?
+
+*You don't have to use Mosh or even know about it to follow along.
+<br/>
+We're just telling you about it because some of us think it's cool!*
+
+- Mosh is "the mobile shell"
+
+- It is essentially SSH over UDP, with roaming features
+
+- It retransmits packets quickly, so it works great even on lossy connections
+
+  (Like hotel or conference WiFi)
+
+- It has intelligent local echo, so it works great even in high-latency connections
+
+  (Like hotel or conference WiFi)
+
+- It supports transparent roaming when your client IP address changes
+
+  (Like when you hop from hotel to conference WiFi)
+
+---
+
+class: in-person, extra-details
+
+## Using Mosh
+
+- To install it: `(apt|yum|brew) install mosh`
+
+- It has been pre-installed on the VMs that we are using
+
+- To connect to a remote machine: `mosh user@host`
+
+  (It is going to establish an SSH connection, then hand off to UDP)
+
+- It requires UDP ports to be open
+
+  (By default, it uses a UDP port between 60000 and 61000)
 
 ---
 
@@ -155,18 +178,18 @@ class: in-person
 
 .exercise[
 
-- Log into the first VM (`node1`) with SSH or MOSH
+- Log into the first VM (`node1`) with your SSH client
 
 <!--
 ```bash
-for N in $(awk '/node/{print $2}' /etc/hosts); do
-  ssh -o StrictHostKeyChecking=no node$N true
+for N in $(awk '/\Wnode/{print $2}' /etc/hosts); do
+  ssh -o StrictHostKeyChecking=no $N true
 done
 ```
 
 ```bash
 if which kubectl; then
-  kubectl get all -o name | grep -v services/kubernetes | xargs -n1 kubectl delete
+  kubectl get all -o name | grep -v service/kubernetes | xargs -n1 kubectl delete
 fi
 ```
 -->
@@ -265,6 +288,14 @@ You are welcome to use the method that you feel the most comfortable with.
 ---
 
 ## Tmux cheatsheet
+
+[Tmux](https://en.wikipedia.org/wiki/Tmux) is a terminal multiplexer like `screen`.
+
+*You don't have to use it or even know about it to follow along.
+<br/>
+But some of us like to use it to switch between terminals.
+<br/>
+It has been preinstalled on your workshop nodes.*
 
 - Ctrl-b c → creates a new window
 - Ctrl-b n → go to next window

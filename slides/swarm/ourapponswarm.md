@@ -83,7 +83,6 @@ We just have to adapt this to our application, which has 4 services!
 
   - AWS/Azure/Google Container Registry
   - GitLab, Quay, JFrog
-
 ]
 
 ---
