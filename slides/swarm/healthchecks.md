@@ -120,7 +120,7 @@ We will use the following Compose file (`stacks/dockercoins+healthcheck.yml`):
 
 - Deploy the updated stack:
   ```bash
-  docker stack deploy dockercoins --compose-file dockercoins+healthcheck.yml
+  docker stack deploy --compose-file dockercoins+healthcheck.yml dockercoins 
   ```
 
 ]
@@ -146,7 +146,7 @@ First, let's make an "innocent" change and deploy it.
   docker-compose -f dockercoins+healthcheck.yml build
   docker-compose -f dockercoins+healthcheck.yml push
   docker service update dockercoins_hasher \
-           --detach=false --image=127.0.0.1:5000/hasher:$TAG
+           --image=127.0.0.1:5000/hasher:$TAG
   ```
 
 ]
@@ -170,7 +170,7 @@ And now, a breaking change that will cause the health check to fail:
   docker-compose -f dockercoins+healthcheck.yml build
   docker-compose -f dockercoins+healthcheck.yml push
   docker service update dockercoins_hasher \
-           --detach=false --image=127.0.0.1:5000/hasher:$TAG
+           --image=127.0.0.1:5000/hasher:$TAG
   ```
 
 ]
