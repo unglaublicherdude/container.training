@@ -1,31 +1,12 @@
 ## Intros
 
-- This slide should be customized by the tutorial instructor(s).
+ - Bret Fisher [@bretfisher](https://twitter.com/bretfisher), who like .emoji[☕🥂🏖️🥃🏋️‍♂️🐳]
+   - Does things at https://bretfisher.com
+   - Docker Captain, Udemy course author, DevOps consultant, meetup organizer
+   - Spends 100% helping people with Docker and container tools
 
-- Hello! We are:
+- The workshop will run from 0900 to 1700, with breaks every 60-90 minutes
 
-   - .emoji[👩🏻‍🏫] Ann O'Nymous ([@...](https://twitter.com/...), Megacorp Inc)
-
-   - .emoji[👨🏾‍🎓] Stu Dent ([@...](https://twitter.com/...), University of Wakanda)
-
- <!-- .dummy[
-
-   - .emoji[👷🏻‍♀️] AJ ([@s0ulshake](https://twitter.com/s0ulshake), Travis CI)
-
-   - .emoji[🐳] Jérôme ([@jpetazzo](https://twitter.com/jpetazzo), Enix SAS)
-
-   - .emoji[⛵] Jérémy ([@jeremygarrouste](twitter.com/jeremygarrouste), Inpiwee)
-
-] -->
-
-- The workshop will run from ...
-
-- There will be a lunch break at ...
-
-  (And coffee breaks!)
-
-- Feel free to interrupt for questions at any time
-
-- *Especially when you see full screen container pictures!*
+- Feel free to interrupt for questions at any time, but some we'll leave to the breaks to answer
 
 - Live feedback, questions, help: @@CHAT@@
