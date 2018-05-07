@@ -1,6 +1,6 @@
 ## Intros
 
- - Bret Fisher [@bretfisher](https://twitter.com/bretfisher), who like .emoji[☕🥂🏖️🥃🏋️‍♂️🐳]
+ - Bret Fisher [@bretfisher](https://twitter.com/bretfisher), who likes .emoji[☕🥂🏖️🥃🏋️‍♂️🐳]
    - Does things at https://bretfisher.com
    - Docker Captain, Udemy course author, DevOps consultant, meetup organizer
    - Spends 100% helping people with Docker and container tools
