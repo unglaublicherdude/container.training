@@ -65,15 +65,25 @@ eb0eeab782f4        host                host
 
 * A network is managed by a *driver*.
 
-* All the drivers that we have seen before are available.
+* The built-in drivers include:
 
-* A new multi-host driver, *overlay*, is available out of the box.
+  * `bridge` (default)
+
+  * `none`
+
+  * `host`
+
+  * `macvlan`
+
+* A multi-host driver, *overlay*, is available out of the box (for Swarm clusters).
 
 * More drivers can be provided by plugins (OVS, VLAN...)
 
 * A network can have a custom IPAM (IP allocator).
 
 ---
+
+class: extra-details
 
 ## Differences with the CNI
 
@@ -84,6 +94,22 @@ eb0eeab782f4        host                host
 * With CNI, all the nodes and containers are on a single IP network
 
 * Both CNI and CNM offer the same functionality, but with very different methods
+
+---
+
+class: pic
+
+## Single container in a Docker network
+
+![bridge0](images/bridge1.png)
+
+---
+
+class: pic
+
+## Two containers on two Docker networks
+
+![bridge3](images/bridge2.png)
 
 ---
 
@@ -284,7 +310,7 @@ since we wiped out the old Redis container).
 
 ---
 
-class: x-extra-details
+class: extra-details
 
 ## Names are *local* to each network
 
@@ -472,11 +498,13 @@ b2887adeb5578a01fd9c55c435cad56bbbe802350711d2743691f95743680b09
 
 * If containers span multiple hosts, we need an *overlay* network to connect them together.
 
-* Docker ships with a default network plugin, `overlay`, implementing an overlay network leveraging VXLAN.
+* Docker ships with a default network plugin, `overlay`, implementing an overlay network leveraging 
+  VXLAN, *enabled with Swarm Mode*.
 
 * Other plugins (Weave, Calico...) can provide overlay networks as well.
 
-* Once you have an overlay network, *all the features that we've used in this chapter work identically.*
+* Once you have an overlay network, *all the features that we've used in this chapter work identically 
+  across multiple hosts.*
 
 ---
 
