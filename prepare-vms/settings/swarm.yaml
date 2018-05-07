@@ -4,7 +4,7 @@
 workshop_name: swarm
 
 # slides URL, in case you want too use something other then default
-url: http://container.training
+url: craftconf18.bretfisher.com
 
 # Number of VMs per cluster
 clustersize: 3
@@ -26,5 +26,5 @@ paper_margin: 0.2in
 engine_version: stable
 
 # These correspond to the version numbers visible on their respective GitHub release pages
-compose_version: 1.21.1
+compose_version: 1.21.2
 machine_version: 0.14.0
