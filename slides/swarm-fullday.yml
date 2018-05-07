@@ -5,6 +5,14 @@ title: |
 # chat: "[Slack](https://dockercommunity.slack.com/messages/C7GKACWDV)"
 chat: "[Gitter](https://gitter.im/bretfisher/craftconf18)"
 
+# URL to swap out for cloning a specific fork in class
+# don't add https:// and remember to make class branch default in github
+# NOTE: we still assume your repoo is also container.training throughout course
+clone: github.com/bretfisher/container.training
+
+# slides URL, in case you want too use something other then default
+url: https://craftconf18.bretfisher.com
+
 exclude:
 - self-paced
 - snap
