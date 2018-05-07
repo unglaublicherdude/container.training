@@ -426,16 +426,10 @@ class: extra-details
 
 .exercise[
 
-- Get the source code of this simple-yet-beautiful visualization app:
+- Run this simple-yet-beautiful visualization app:
   ```bash
-  cd ~
-  git clone git://github.com/dockersamples/docker-swarm-visualizer
-  ```
-
-- Build and run the Swarm visualizer:
-  ```bash
-  cd docker-swarm-visualizer
-  docker-compose up -d
+  cd ~/container.training/stacks
+  docker-compose -f visualizer.yml up -d
   ```
 
   <!-- ```longwait Creating dockerswarmvisualizer_viz_1``` -->
@@ -476,7 +470,7 @@ class: extra-details
 
 - Instead of viewing your cluster, this could take care of logging, metrics, autoscaling ...
 
-- We can run it within a service, too! We won't do it, but the command would look like:
+- We can run it within a service, too! We won't do it yet, but the command would look like:
 
   ```bash
     docker service create \
@@ -484,11 +478,15 @@ class: extra-details
       --name viz --constraint node.role==manager ...
   ```
 
+.footnote[
+
 Credits: the visualization code was written by
 [Francisco Miranda](https://github.com/maroshii).
-<br/>
+
 [Mano Marks](https://twitter.com/manomarks) adapted
 it to Swarm and maintains it.
+
+]
 
 ---
 
