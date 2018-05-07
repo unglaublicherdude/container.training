@@ -1,8 +1,7 @@
 ## Brand new versions!
 
-- Engine 18.03
-- Compose 1.21
-- Machine 0.14
+- Engine 18.03.1-ce
+- Compose 1.21.2
 
 .exercise[
 
@@ -10,14 +9,13 @@
   ```bash
   docker version
   docker-compose -v
-  docker-machine -v
   ```
 
 ]
 
 ---
 
-## Wait, what, 17.12 ?!?
+## Wait, what, 18.03.1-ce ?!?
 
 --
 
