@@ -9,11 +9,11 @@ chat: "[Gitter](https://gitter.im/BretFisher/muracon18)"
 # URL to swap out for cloning a specific fork in class
 # don't add https:// and remember to make class branch default in github
 #clone: github.com/jpetazzo/container.training
-clone: github.com/jpetazzo/container.training
+clone: github.com/bretfisher/container.training
 
 # slides URL, in case you want too use something other then default
 #url: http://container.training
-url: http://container.training
+url: https://revconf18.bretfisher.com
 
 exclude:
 - self-paced

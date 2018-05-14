@@ -9,7 +9,7 @@
 (more install info in the [Docker install chapter](#toc-installing-docker))
 ]
 
-Clone this workshop repo: `git clone --depth 1 --branch https://github.com/bretfisher/container.training.git` -->
+Clone this workshop repo: `git clone https://github.com/bretfisher/container.training.git` -->
 
 Download images you'll need (totaling 4.3GB):
 
