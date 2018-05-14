@@ -20,6 +20,7 @@ forever)
     echo >&2 "First install 'entr' with apt, brew, etc."
     exit
   fi
+  
   # There is a weird bug in entr, at least on MacOS,
   # where it doesn't restore the terminal to a clean
   # state when exitting. So let's try to work around

@@ -53,6 +53,10 @@ If you are using Docker for Mac/Windows or the Toolbox, docker-compose comes wit
 
 If you're on Linux desktop/server, you'll need to get the lastest at https://github.com/docker/compose/releases
 
+If you are using Docker for Mac/Windows or the Docker Toolbox, Compose comes with them.
+
+If you are on Linux (desktop or server environment), you will need to install Compose from its [release page](https://github.com/docker/compose/releases) or with `pip install docker-compose`.
+
 You can always check that it is installed by running:
 
 ```bash
@@ -128,13 +132,11 @@ services:
 
 ---
 
-## Compose file versions
+## Compose file structure
 
-Version 1 (or no version) is legacy and shouldn't be used.
+A Compose file has multiple sections:
 
-Version 2 has multiple sections:
-
-* `version` is mandatory and should be `"2"` or `"2.x"`.
+* `version` is mandatory. (We should use `"2"` or later; version 1 is deprecated.)
 
 * `services` is mandatory. A service is one or more replicas of the same image running as containers.
 
@@ -143,7 +145,20 @@ Version 2 has multiple sections:
 
 * `volumes` is optional and can define volumes to be used and/or shared by the containers.
 
-Version 3 adds support for deployment options (scaling, rolling updates, etc.)
+---
+
+## Compose file versions
+
+* Version 1 is legacy and shouldn't be used.
+
+  (If you see a Compose file without `version` and `services`, it's a legacy v1 file.)
+
+* Version 2 added support for networks and volumes.
+
+* Version 3 added support for deployment options (scaling, rolling updates, etc).
+
+The [Docker documentation](https://docs.docker.com/compose/compose-file/)
+has excellent information about the Compose file format if you need to know more about versions.
 
 Docker Docs has good info on versions https://docs.docker.com/compose/compose-file/
 
@@ -252,6 +267,8 @@ Stopping trainingwheels_redis_1 ... done
 Removing trainingwheels_www_1 ... done
 Removing trainingwheels_redis_1 ... done
 ```
+
+Use `docker-compose down -v` to remove everything including volumes.
 
 ---
 

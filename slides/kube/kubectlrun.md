@@ -20,9 +20,10 @@
 
 .exercise[
 
-- Let's ping `goo.gl`:
+- Let's ping `1.1.1.1`, Cloudflare's 
+  [public DNS resolver](https://blog.cloudflare.com/announcing-1111/):
   ```bash
-  kubectl run pingpong --image alpine ping goo.gl
+  kubectl run pingpong --image alpine ping 1.1.1.1
   ```
 
 ]
@@ -49,9 +50,11 @@ OK, what just happened?
 --
 
 We should see the following things:
-- `deploy/pingpong` (the *deployment* that we just created)
-- `rs/pingpong-xxxx` (a *replica set* created by the deployment)
-- `po/pingpong-yyyy` (a *pod* created by the replica set)
+- `deployment.apps/pingpong` (the *deployment* that we just created)
+- `replicaset.apps/pingpong-xxxxxxxxxx` (a *replica set* created by the deployment)
+- `pod/pingpong-xxxxxxxxxx-yyyyy` (a *pod* created by the replica set)
+
+Note: as of 1.10.1, resource types are displayed in more detail.
 
 ---
 
@@ -80,19 +83,30 @@ We should see the following things:
 
 ## Our `pingpong` deployment
 
-- `kubectl run` created a *deployment*, `deploy/pingpong`
+- `kubectl run` created a *deployment*, `deployment.apps/pingpong`
 
-- That deployment created a *replica set*, `rs/pingpong-xxxx`
+```
+NAME                       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/pingpong   1         1         1            1           10m
+```
 
-- That replica set created a *pod*, `po/pingpong-yyyy`
+- That deployment created a *replica set*, `replicaset.apps/pingpong-xxxxxxxxxx`
+
+```
+NAME                                  DESIRED   CURRENT   READY     AGE
+replicaset.apps/pingpong-7c8bbcd9bc   1         1         1         10m
+```
+
+- That replica set created a *pod*, `pod/pingpong-xxxxxxxxxx-yyyyy`
+
+```
+NAME                            READY     STATUS    RESTARTS   AGE
+pod/pingpong-7c8bbcd9bc-6c9qz   1/1       Running   0          10m
+```
 
 - We'll see later how these folks play together for:
 
-  - scaling
-
-  - high availability
-
-  - rolling updates
+  - scaling, high availability, rolling updates
 
 ---
 
@@ -137,9 +151,8 @@ We should see the following things:
   ```
 
 <!--
-```keys
-^C
-```
+```wait seq=3```
+```keys ^C```
 -->
 
 ]
@@ -159,7 +172,7 @@ We should see the following things:
 
 ]
 
-Note: what if we tried to scale `rs/pingpong-xxxx`?
+Note: what if we tried to scale `replicaset.apps/pingpong-xxxxxxxxxx`?
 
 We could! But the *deployment* would notice it right away, and scale back to the initial level.
 
@@ -181,14 +194,13 @@ We could! But the *deployment* would notice it right away, and scale back to the
   ```
 
 <!--
-```keys
-^C
-```
+```wait Running```
+```keys ^C```
 -->
 
 - Destroy a pod:
   ```bash
-  kubectl delete pod pingpong-yyyy
+  kubectl delete pod pingpong-xxxxxxxxxx-yyyyy
   ```
 ]
 
@@ -234,15 +246,15 @@ Unfortunately, `--follow` cannot (yet) be used to stream the logs from multiple 
 
 ---
 
-class: title
+## Aren't we flooding 1.1.1.1?
 
-Meanwhile,
-<br/>
-at the Google NOC ...
-<br/>
-<br/>
-.small[“Why the hell]
-<br/>
-.small[are we getting 1000 packets per second]
-<br/>
-.small[of ICMP ECHO traffic from these IPs?!?”]
+- If you're wondering this, good question!
+
+- Don't worry, though:
+
+  *APNIC's research group held the IP addresses 1.1.1.1 and 1.0.0.1. While the addresses were valid, so many people had entered them into various random systems that they were continuously overwhelmed by a flood of garbage traffic. APNIC wanted to study this garbage traffic but any time they'd tried to announce the IPs, the flood would overwhelm any conventional network.*
+
+  (Source: https://blog.cloudflare.com/announcing-1111/)
+
+- It's very unlikely that our concerted pings manage to produce
+  even a modest blip at Cloudflare's NOC!

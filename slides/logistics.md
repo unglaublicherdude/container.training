@@ -9,30 +9,18 @@
 (more install info in the [Docker install chapter](#toc-installing-docker))
 ]
 
-Clone the MuraCon repo if you don't have it:
-
-.small[
-  ```bash
-  git clone --depth 1 https://github.com/blueriver/MuraCMS.git
-```
-]
-
-<!-- Clone this workshop repo:   -->
-
-<!-- `git clone --depth 1 --branch muracon18 https://github.com/bretfisher/muracon18.git` -->
+Clone this workshop repo: `git clone --depth 1 --branch https://github.com/bretfisher/container.training.git` -->
 
 Download images you'll need (totaling 4.3GB):
 
 .small[
   ```bash
   docker pull ubuntu
-  docker pull blueriver/muracms
   docker pull mysql
   docker pull redis
   docker pull jpetazzo/trainingwheels
   docker pull python
   docker pull ruby:2.1
-  docker pull ortussolutions/commandbox
   ```
 ]
 
@@ -46,10 +34,8 @@ Download images you'll need (totaling 4.3GB):
    - I spend 100% helping people with Docker and container tools
    - Plugging a good cause: Improve your community with code [codeforamerica.org](https://www.codeforamerica.org)
 
-- The workshop will run from 9am to 12pm, with breaks at 10 and 11
+- The workshop will run from 2:30pm to 5:15pm, with a break at 4
 
 - Feel free to interrupt for questions at any time
-
-- Then at 2pm we have a session talking about taking Docker to production
 
 - Live feedback, questions, help on @@CHAT@@

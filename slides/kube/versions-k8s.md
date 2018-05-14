@@ -1,8 +1,8 @@
 ## Versions installed
 
-- Kubernetes 1.9.6 (but 1.10 is about to come out!)
+- Kubernetes 1.10.1
 - Docker Engine 18.03.0-ce
-- Docker Compose 1.18.0
+- Docker Compose 1.20.1
 
 
 .exercise[
@@ -22,7 +22,7 @@ class: extra-details
 
 ## Kubernetes and Docker compatibility
 
-- Kubernetes only validates Docker Engine versions 1.11.2, 1.12.6, 1.13.1, and 17.03.2
+- Kubernetes 1.10.x only validates Docker Engine versions [1.11.2 to 1.13.1 and 17.03.x](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md#external-dependencies)
 
 --
 
