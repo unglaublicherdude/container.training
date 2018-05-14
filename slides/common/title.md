@@ -19,5 +19,5 @@ for Local Dev With Mura<br/>
 *Don't stream videos or download big files during the workshop.*<br/>
 *Thank you!*
 
-**Slides: https://muracon18.bretfisher.com**
+**Slides: @@URL@@**
 ]
