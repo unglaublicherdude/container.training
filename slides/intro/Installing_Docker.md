@@ -32,7 +32,8 @@ We can arbitrarily distinguish:
 
 ## Installing Docker on Linux
 
-* The recommended method is to install the packages supplied by Docker Inc. at https://store.docker.com
+* The recommended method is to install the packages supplied by Docker Inc. at
+  https://store.docker.com
 
 * The general method is:
 
@@ -74,7 +75,7 @@ class: extra-details
 
 ## Installing Docker on macOS and Windows
 
-* On macOS, the recommended method is to use Docker4Mac:
+* On macOS, the recommended method is to use Docker for Mac:
 
   https://docs.docker.com/docker-for-mac/install/
 
@@ -85,6 +86,27 @@ class: extra-details
 * On older versions of Windows, you can use the Docker Toolbox:
 
   https://docs.docker.com/toolbox/toolbox_install_windows/
+
+* On Windows Server 2016+, you can [install the native engine](https://docs.docker.com/install/windows/docker-ee/)
+  or Docker for Windows (if using win2016 for local dev)
+
+---
+
+## Docker for Mac and Docker for Windows
+
+* Special Docker Editions that have Settings GUI and use Host OS prefered virtualization
+
+* They are installed like normal applications on the host, and run a tiny VM that is 
+  mostly transparent to your daily use.
+
+* They access network resources like normal applications
+  <br/>(and therefore, play better with enterprise VPNs and firewalls)
+
+* They support filesystem sharing through volumes (we'll talk about this later)
+
+* They only support running one Docker VM at a time ...
+
+  ... so if you want to run a full cluster locally, you can still use docker-machine
 
 ---
 
@@ -102,45 +124,6 @@ When you execute `docker version` from the terminal:
 All communication with the Docker Engine happens over the API.
 
   https://docs.docker.com/install/windows/docker-ee/
-
----
-
-## Running Docker on macOS and Windows
-
-* Special Docker Editions that have Settings GUI and use Host OS prefered virtualization
-
-* They are installed like normal applications on host
-
-* They run a tiny special VM that is mostly transparent to your daily use 
-  <br/>(e.g. http://localhost)
-
-* They access network resources like normal applications
-  <br/>(and therefore, play well with enterprise VPNs and firewalls)
-
-* They support filesystem sharing through volumes (we'll talk about this later)
-
-* They are a superset of the features in Docker Toolbox
-
-* They only support running one Docker VM at a time ...
-
-  ... so if you want to run a full cluster locally, use docker-machine (rarely needed)
-
----
-
-## Running Docker on macOS and Windows, cont.
-
-When you execute `docker version` from the terminal:
-
-* the CLI connects to the Docker Engine over a standard socket,
-* the Docker Engine is, in fact, running in a VM,
-* ... but the CLI doesn't know or care about that,
-* the CLI sends a request using the REST API,
-* the Docker Engine in the VM processes the request,
-* the CLI gets the response and displays it to you.
-
-All communication with the Docker Engine happens over the API.
-
-This will also allow to use remote Engines exactly as if they were local.
 
 ---
 

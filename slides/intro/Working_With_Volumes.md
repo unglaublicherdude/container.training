@@ -31,6 +31,8 @@ Docker volumes can be used to achieve many things, including:
 
 * Sharing a *single file* between the host and a container.
 
+* Using remote storage and custom storage with "volume drivers"
+
 ---
 
 ## Volumes are special directories in a container
@@ -55,7 +57,7 @@ In both cases, `/uploads` (inside the container) will be a volume.
 
 ## Volumes exist independently of containers
 
-If a container is stopped, its volumes still exist and are available.
+If a container is stopped or removed, its volumes still exist and are available.
 
 Volumes can be listed and manipulated with `docker volume` subcommands:
 
@@ -118,7 +120,27 @@ $ curl localhost:1234
 
 ---
 
-## Managing volumes explicitly with "bind-mounts"
+## Using a volume in another container
+
+* We will make changes to the volume from another container.
+
+* In this example, we will run a text editor in the other container.
+
+  (But this could be a FTP server, a WebDAV server, a Git receiver...)
+
+Let's start another container using the `webapps` volume.
+
+```bash
+$ docker run -v webapps:/webapps -w /webapps -ti alpine vi ROOT/index.jsp
+```
+
+Vandalize the page, save, exit.
+
+Then run `curl localhost:1234` again to see your changes.
+
+---
+
+## Using custom "bind-mounts"
 
 In some cases, you want a specific directory on the host to be mapped
 inside the container:
@@ -142,14 +164,183 @@ $ docker run -d -v /path/on/the/host:/path/in/container image ...
 
 ---
 
+class: extra-details
+
+## Migrating data with `--volumes-from`
+
+The `--volumes-from` option tells Docker to re-use all the volumes
+of an existing container.
+
+* Scenario: migrating from Redis 2.8 to Redis 3.0.
+
+* We have a container (`myredis`) running Redis 2.8.
+
+* Stop the `myredis` container.
+
+* Start a new container, using the Redis 3.0 image, and the `--volumes-from` option.
+
+* The new container will inherit the data of the old one.
+
+* Newer containers can use `--volumes-from` too.
+
+* Doesn't work across servers, so not usable in clusters (Swarm, Kubernetes)
+
+---
+
+class: extra-details
+
+## Data migration in practice
+
+Let's create a Redis container.
+
+```bash
+$ docker run -d --name redis28 redis:2.8
+```
+
+Connect to the Redis container and set some data.
+
+```bash
+$ docker run -ti --link redis28:redis alpine telnet redis 6379
+```
+
+Issue the following commands:
+
+```bash
+SET counter 42
+INFO server
+SAVE
+QUIT
+```
+
+---
+
+class: extra-details
+
+## Upgrading Redis
+
+Stop the Redis container.
+
+```bash
+$ docker stop redis28
+```
+
+Start the new Redis container.
+
+```bash
+$ docker run -d --name redis30 --volumes-from redis28 redis:3.0
+```
+
+---
+
+class: extra-details
+
+## Testing the new Redis
+
+Connect to the Redis container and see our data.
+
+```bash
+docker run -ti --link redis30:redis alpine telnet redis 6379
+```
+
+Issue a few commands.
+
+```bash
+GET counter
+INFO server
+QUIT
+```
+
+---
+
+## Volumes lifecycle
+
+* When you remove a container, its volumes are kept around.
+
+* You can list them with `docker volume ls`.
+
+* You can access them by creating a container with `docker run -v`.
+
+* You can remove them with `docker volume rm` or `docker system prune`.
+
+Ultimately, _you_ are the one responsible for logging,
+monitoring, and backup of your volumes.
+
+---
+
+class: extra-details
+
+## Checking volumes defined by an image
+
+Wondering if an image has volumes? Just use `docker inspect`:
+
+```bash
+$ # docker inspect training/datavol
+[{
+  "config": {
+    . . .
+    "Volumes": {
+        "/var/webapp": {}
+    },
+    . . .
+}]
+```
+
+---
+
+class: extra-details
+
+## Checking volumes used by a container
+
+To look which paths are actually volumes, and to what they are bound,
+use `docker inspect` (again):
+
+```bash
+$ docker inspect <yourContainerID>
+[{
+  "ID": "<yourContainerID>",
+. . .
+  "Volumes": {
+     "/var/webapp": "/var/lib/docker/vfs/dir/f4280c5b6207ed531efd4cc673ff620cef2a7980f747dbbcca001db61de04468"
+  },
+  "VolumesRW": {
+     "/var/webapp": true
+  },
+}]
+```
+
+* We can see that our volume is present on the file system of the Docker host.
+
+---
+
+## Sharing a single file
+
+The same `-v` flag can be used to share a single file (instead of a directory).
+
+One of the most interesting examples is to share the Docker control socket.
+
+```bash
+$ docker run -it -v /var/run/docker.sock:/var/run/docker.sock docker sh
+```
+
+From that container, you can now run `docker` commands communicating with
+the Docker Engine running on the host. Try `docker ps`!
+
+.warning[Since that container has access to the Docker socket, it
+has root-like access to the host.]
+
+---
+
 ## Volume plugins
 
 You can install plugins to manage volumes backed by particular storage systems,
 or providing extra features. Find many at https://store.docker.com under plugins. For instance:
 
-* [REX-Ray](https://github.com/emccode/rexray) - create and manage volumes backed by an shared storage (e.g. SAN or NAS), or by cloud block stores (e.g. EBS, EFS, S3);
-* [Portworx](http://portworx.com/) - provide distributed block store for containers;
-* and much more!
+* [REX-Ray](https://rexray.io/) - create and manage volumes backed by an enterprise storage system (e.g. 
+  SAN or NAS), or by cloud block stores (e.g. EBS, EFS).
+* [Portworx](http://portworx.com/) - provide distributed block store for containers.
+* [Gluster](https://www.gluster.org/) - open source software-defined distributed storage that can scale 
+  to several petabytes. It provides interfaces for object, block and file storage.
+* and much more at the [Docker Store](https://store.docker.com/search?category=volume&q=&type=plugin)!
 
 ---
 

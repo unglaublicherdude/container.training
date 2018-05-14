@@ -126,7 +126,7 @@ Now, try to:
 
 ## Host and containers are independent things
 
-* We ran an `ubuntu` container on an `linux/windows/mac` host.
+* We ran an `ubuntu` container on an Linux/Windows/macOS host.
 
 * But they have different, independent packages/apps.
 
@@ -134,7 +134,9 @@ Now, try to:
 
 * And vice-versa.
 
-* We can run *any container* on *any host*.
+* We can run *any container* on *any host*. **
+
+  ** Linux containers need a Linux Kernel, Windows containers need Windows Kernel, etc.
 
 ---
 

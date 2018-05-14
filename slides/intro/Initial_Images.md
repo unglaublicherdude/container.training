@@ -114,6 +114,20 @@ class: pic
 
 ---
 
+## Differences between containers and images
+
+* An image is a read-only filesystem.
+
+* A container is an encapsulated set of processes running in a
+  read-write copy of that filesystem.
+
+* To optimize container boot time, *copy-on-write* is used 
+  instead of regular copy.
+
+* `docker run` starts a container from a given image.
+
+---
+
 ## How do we get images?
 
 * We download (aka pull) them from a image "registry".
@@ -143,7 +157,7 @@ If an image is read-only, how do we change it?
 * Saves all the changes made to a container into a new layer.
 * Creates a new image (effectively a copy of the container).
 
-(we can also `docker import` but that's also rarely used)
+`docker build` (**used 99% of time**)
 
 We'll cover building images in a minute!
 
@@ -181,6 +195,8 @@ Those images include:
 * Distro images to be used as bases for your builds, like `ubuntu`, `fedora`...
 
 * Ready-to-use components and services, like `redis`, `postgresql`...
+
+* Over 130 at this point!
 
 * Over 130 at this point!
 
