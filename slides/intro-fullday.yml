@@ -31,30 +31,30 @@ chapters:
   - intro/Installing_Docker.md
   - intro/First_Containers.md
   - intro/Background_Containers.md
-  # - intro/Start_And_Attach.md
 - - intro/Initial_Images.md
-  # - intro/Building_Images_Interactively.md
   - intro/Building_Images_With_Dockerfiles.md
   - intro/Cmd.md
-  # - intro/Entrypoint.md
   - intro/Copying_Files_During_Build.md
-  # - intro/Multi_Stage_Builds.md
   - intro/Publishing_To_Docker_Hub.md
   - intro/Dockerfile_Tips.md
 - - intro/Naming_And_Inspecting.md
-  # - intro/Labels.md
-  # - intro/Getting_Inside.md
   - intro/Container_Networking_Basics.md
-  # - intro/Network_Drivers.md
   - intro/Container_Network_Model.md
   #- intro/Connecting_Containers_With_Links.md
   # - intro/Ambassadors.md
 - - intro/Local_Development_Workflow.md
   - intro/Working_With_Volumes.md
   - intro/Compose_For_Dev_Stacks.md
+  - intro/Start_And_Attach.md
+  - intro/Building_Images_Interactively.md
+  - intro/Entrypoint.md
+  - intro/Getting_Inside.md
   - intro/Docker_Machine.md
   - intro/Advanced_Dockerfiles.md
+  - intro/Multi_Stage_Builds.md
   - intro/Application_Configuration.md
+  - intro/Network_Drivers.md
+  - intro/Labels.md
   - intro/Logging.md
 - - intro/Namespaces_Cgroups.md
   - intro/Copy_On_Write.md
