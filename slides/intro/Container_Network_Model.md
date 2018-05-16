@@ -93,14 +93,6 @@ class: extra-details
 
 class: pic
 
-## Two containers on two Docker networks
-
-![bridge3](images/bridge2.png)
-
----
-
-class: pic
-
 ## Single container in a Docker network
 
 ![bridge0](images/bridge1.png)

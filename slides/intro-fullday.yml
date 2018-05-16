@@ -3,8 +3,8 @@ title: |
   to Docker and
   Containers
 
-#chat: "[Slack](https://dockercommunity.slack.com/messages/C7GKACWDV)"
-chat: "[Gitter](https://gitter.im/BretFisher/muracon18)"
+chat: "[Slack](https://revolutionconf.slack.com/messages/CAQ4AE5HB/)"
+# chat: "[Gitter](https://gitter.im/BretFisher/muracon18)"
 
 # URL to swap out for cloning a specific fork in class
 # don't add https:// and remember to make class branch default in github
@@ -26,8 +26,8 @@ chapters:
 - common/about-slides.md
 - common/toc.md
 - - intro/Docker_Overview.md
-  - intro/Docker_History.md
-  - intro/Training_Environment.md
+  # - intro/Docker_History.md
+  # - intro/Training_Environment.md
   - intro/Installing_Docker.md
   - intro/First_Containers.md
   - intro/Background_Containers.md
@@ -35,14 +35,15 @@ chapters:
 - - intro/Initial_Images.md
   # - intro/Building_Images_Interactively.md
   - intro/Building_Images_With_Dockerfiles.md
-  - intro/Cmd_And_Entrypoint.md
+  - intro/Cmd.md
+  # - intro/Entrypoint.md
   - intro/Copying_Files_During_Build.md
   # - intro/Multi_Stage_Builds.md
   - intro/Publishing_To_Docker_Hub.md
   - intro/Dockerfile_Tips.md
 - - intro/Naming_And_Inspecting.md
-  - intro/Labels.md
-  - intro/Getting_Inside.md
+  # - intro/Labels.md
+  # - intro/Getting_Inside.md
   - intro/Container_Networking_Basics.md
   # - intro/Network_Drivers.md
   - intro/Container_Network_Model.md
