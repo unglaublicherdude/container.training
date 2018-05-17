@@ -43,8 +43,8 @@ chapters:
   #- intro/Connecting_Containers_With_Links.md
   # - intro/Ambassadors.md
 - - intro/Local_Development_Workflow.md
-  - intro/Working_With_Volumes.md
   - intro/Compose_For_Dev_Stacks.md
+  - intro/Working_With_Volumes.md
   - intro/Start_And_Attach.md
   - intro/Building_Images_Interactively.md
   - intro/Entrypoint.md

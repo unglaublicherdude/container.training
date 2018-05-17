@@ -167,7 +167,6 @@ We will tell Docker to map the current directory to `/src` in the container.
 ```bash
 $ docker run -d -v $(pwd):/src -P namer
 ```
-If in PowerShell, replace `$(pwd)` with `${pwd}`
 
 If in PowerShell, replace `$(pwd)` with `${pwd}`
 
