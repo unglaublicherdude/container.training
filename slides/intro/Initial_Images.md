@@ -157,10 +157,6 @@ If an image is read-only, how do we change it?
 * Saves all the changes made to a container into a new layer.
 * Creates a new image (effectively a copy of the container).
 
-`docker build` (**used 99% of time**)
-
-We'll cover building images in a minute!
-
 ---
 
 ## Images namespaces
@@ -195,8 +191,6 @@ Those images include:
 * Distro images to be used as bases for your builds, like `ubuntu`, `fedora`...
 
 * Ready-to-use components and services, like `redis`, `postgresql`...
-
-* Over 130 at this point!
 
 * Over 130 at this point!
 
@@ -239,6 +233,7 @@ Images can be stored:
 
 * On your Docker host.
 * In a Docker registry.
+* Exported (save) to external tar archive (rare)
 
 You can use the Docker client to download (pull) or upload (push) images.
 
