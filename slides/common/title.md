@@ -8,8 +8,7 @@ class: title, self-paced
 
 class: title, in-person
 
-Introduction to Containers<br/>
-for Local Dev With Mura<br/>
+@@TITLE@@
 <br/></br>
 
 .footnote[
