@@ -9,7 +9,7 @@
 (more install info in the [Docker install chapter](#toc-installing-docker))
 ]
 
-Get this workshop repo: 
+Get this workshop repo (preferability somewhere in your user profile): 
 
 `git clone --depth 1 https://github.com/bretfisher/container.training.git`
 
@@ -34,9 +34,8 @@ Download images you'll need (totaling 4.3GB):
    - I do things at https://bretfisher.com
    - Docker Captain, Udemy Course Author, DevOps Consultant, Meetup Organizer
    - I spend 100% helping people with Docker and container tools
-   - Plugging a good cause: Improve your community with code [codeforamerica.org](https://www.codeforamerica.org)
 
-- The workshop will run from 2:30pm to 5:15pm, with a break at 4
+- The workshop will run from 1pm to 5pm, with a short break every hour
 
 - Feel free to interrupt for questions at any time
 
