@@ -51,10 +51,6 @@ This is how you work with Compose:
 
 If you are using Docker for Mac/Windows or the Toolbox, docker-compose comes with them.
 
-If you're on Linux desktop/server, you'll need to get the lastest at https://github.com/docker/compose/releases
-
-If you are using Docker for Mac/Windows or the Docker Toolbox, Compose comes with them.
-
 If you are on Linux (desktop or server environment), you will need to install Compose from its [release page](https://github.com/docker/compose/releases) or with `pip install docker-compose`.
 
 You can always check that it is installed by running:

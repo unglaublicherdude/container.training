@@ -29,6 +29,7 @@ chapters:
   # - intro/Docker_History.md
   # - intro/Training_Environment.md
 - - intro/Installing_Docker.md
+  - intro/Check_Our_Setup.md
   - intro/First_Containers.md
   - intro/Background_Containers.md
 - - intro/Initial_Images.md
