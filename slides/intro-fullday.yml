@@ -4,7 +4,7 @@ title: |
   Containers
 
 # chat: "[Slack](https://revolutionconf.slack.com/messages/CAQ4AE5HB/)"
-chat: "[Gitter](https://gitter.im/BretFisher/stgeorge18)"
+chat: "[Gitter](https://gitter.im/BretFisher/faithlife18)"
 
 # URL to swap out for cloning a specific fork in class
 # don't add https:// and remember to make class branch default in github
@@ -13,7 +13,7 @@ clone: github.com/bretfisher/container.training
 
 # slides URL, in case you want too use something other then default
 #url: http://container.training
-url: https://stgeorge18.bretfisher.com
+url: https://faithlife18.bretfisher.com
 
 exclude:
 - self-paced
