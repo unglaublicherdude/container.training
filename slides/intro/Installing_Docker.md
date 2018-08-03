@@ -123,8 +123,6 @@ When you execute `docker version` from the terminal:
 
 All communication with the Docker Engine happens over the API.
 
-  https://docs.docker.com/install/windows/docker-ee/
-
 ---
 
 ## Important PSA about security

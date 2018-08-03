@@ -330,12 +330,15 @@ There has to be a better way!
 * Here is the `docker-compose.yml` file that we can use for our "namer" app:
 
   ```yaml
-  www:
-    build: .
-    volumes:
-      - .:/src
-    ports:
-      - 80:9292
+  version: '2'
+
+  services:
+    www:
+      build: .
+      volumes:
+        - .:/src
+      ports:
+        - 80:9292
   ```
 
 * Try it:

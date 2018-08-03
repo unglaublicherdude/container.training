@@ -1,12 +1,11 @@
-# Resources
+# Bret's Resources
 
----
+- Docker Mastery video course for $10 http://dockermastery.com (You Got Free!)
 
-## Bret's resources
+- Docker Swarm Mastery video course for $10 http://swarmmastery.com
 
-- Docker Mastery 8-hour course on sale for $10.99 for MuraCon: https://bretfisher.com/dockermastery 
-- Docker Swarm Mastery 5-hour course on sale for $10.99 for MuraCon: https://bretfisher.com/dockerswarmmastery
-- Blog/Tips/Social Links: https://bretfisher.com
+- Blog/Tips/Social Links: https://bretfisher.com/docker
+
 - YouTube Channel: https://www.youtube.com/c/BretFisherITPro
 
 ---
