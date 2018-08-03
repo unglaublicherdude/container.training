@@ -97,4 +97,28 @@ Doh! We need to switch to Windows Containers mode
 
 (notice neither of these show up in Hyper-V but they are there, hidden nano and "LinuxKit" VM's)
 
+---
 
+## Other Windows Container options
+
+Most "official" Docker images don't run on Windows yet
+
+Places to Look:
+  - Hub Official: https://hub.docker.com/u/winamd64/ 
+  - Microsoft: https://hub.docker.com/r/microsoft/
+
+---
+
+## SQL Server? Choice of Linux or Windows
+
+Microsoft [SQL Server for Linux 2017](https://hub.docker.com/r/microsoft/mssql-server-linux/)
+
+Microsoft [SQL Server Express 2017](https://hub.docker.com/r/microsoft/mssql-server-windows-express/)
+
+---
+
+## Windows Tools and Tips
+
+- PowerShell [Tab Completion: DockerCompletion](https://github.com/matt9ucci/DockerCompletion)
+- Best Shell GUI: [Cmder.net](http://cmder.net/)
+- Best Blog and How-To's, Dockers DevRel [Elton Stoneman, Microsoft MVP](https://blog.sixeyed.com/)

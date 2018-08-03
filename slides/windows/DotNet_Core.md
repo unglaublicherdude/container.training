@@ -85,6 +85,9 @@ Can we force the Windows Containers to build it on Linux?
 
 (lets [look at the Dockerfile(s)](https://github.com/dotnet/dotnet-docker/tree/master/samples/aspnetapp))
 
+- The default Dockerfile is "multi-arch" and will default to your preferred
+- You can use a different Dockerfile for a different arch/os
+
 
 
 
