@@ -1,28 +1,18 @@
 class: title
 
-# Local development workflow with Docker
+# Run the Voting (distributed, multi-lang) App
 
   ![Construction site](images/title-local-development-workflow-with-docker.jpg)
 
 ---
 
-## Objectives
+## Get the Voting Example App and Lets Rock!
 
-  At the end of this section, you will be able to:
-
-  * Share code between container and host.
-
-  * Use a simple local development workflow.
-
----
-
-  
-## .NET Core: https://hub.docker.com/r/microsoft/dotnet/
-
-- microsoft/dotnet or microsoft/dotnet:latest (alias for the SDK image)
-- microsoft/dotnet:sdk
-- microsoft/dotnet:runtime
-- microsoft/dotnet:runtime-deps
+```bash
+git clone https://github.com/dockersamples/example-voting-app.git
+cd example-voting-app
+docker-compose up -d
+```
 
 ---
 

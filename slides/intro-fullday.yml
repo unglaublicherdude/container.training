@@ -49,7 +49,7 @@ chapters:
   - intro/Multi_Stage_Builds.md
 - - windows/Windows_Containers.md
   - windows/DotNet_Core.md
-  # - windows/Local_Dev_With_Containers.md
+  - windows/Local_Dev_With_Containers.md
 - - intro/Bonus.md
   - intro/Start_And_Attach.md
   - intro/Building_Images_Interactively.md
