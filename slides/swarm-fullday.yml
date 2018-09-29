@@ -2,12 +2,12 @@ title: |
   Container Orchestration
   with Docker and Swarm
 
-chat: "[Slack](https://dockercommunity.slack.com/messages/C7GKACWDV)"
+chat: "[Slack](https://dockermastery.slack.com/messages/CD2J0CWP6)"
 #chat: "[Gitter](https://gitter.im/jpetazzo/workshop-yyyymmdd-city)"
 
-gitrepo: github.com/jpetazzo/container.training
+gitrepo: github.com/bretfisher/container.training
 
-slides: http://container.training/
+slides: https://velocityconf18.bretfisher.com
 
 exclude:
 - self-paced
@@ -19,7 +19,7 @@ exclude:
 
 chapters:
 - shared/title.md
-- logistics.md
+- logistics-bret-2.md
 - swarm/intro.md
 - shared/about-slides.md
 - shared/toc.md
