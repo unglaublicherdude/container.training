@@ -47,7 +47,7 @@ chapters:
 - - swarm/operatingswarm.md
   - swarm/netshoot.md
   - swarm/ipsec.md
-  - swarm/swarmtools.md
+  # - swarm/swarmtools.md
   - swarm/security.md
   - swarm/secrets.md
   - swarm/encryptionatrest.md
