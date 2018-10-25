@@ -128,7 +128,7 @@
 
 - Associate the file to a loop device on each node:
   ```bash
-  for N in $(seq 1 5); do ssh node$N sudo losetup /dev/loop0 /portworx.blk; done
+  for N in $(seq 1 5); do ssh node$N sudo losetup /dev/loop4 /portworx.blk; done
   ```
 
 ]
@@ -139,7 +139,7 @@
 
 - To install Portworx, we need to go to https://install.portworx.com/
 
-- This website will ask us a bunch of questoins about our cluster
+- This website will ask us a bunch of questions about our cluster
 
 - Then, it will generate a YAML file that we should apply to our cluster
 
@@ -168,7 +168,7 @@ way is to use https://install.portworx.com/.
 FYI, this is how we obtained the YAML file used earlier:
 ```
 KBVER=$(kubectl version -o json | jq -r .serverVersion.gitVersion)
-BLKDEV=/dev/loop0
+BLKDEV=/dev/loop4
 curl https://install.portworx.com/1.4/?kbver=$KBVER&b=true&s=$BLKDEV&c=px-workshop&stork=true&lh=true
 ```
 If you want to use an external key/value store, add one of the following:

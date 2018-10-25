@@ -36,7 +36,7 @@
 
 ## Creating a daemon set
 
-- Unfortunately, as of Kubernetes 1.11, the CLI cannot create daemon sets
+- Unfortunately, as of Kubernetes 1.12, the CLI cannot create daemon sets
 
 --
 
@@ -344,7 +344,7 @@ to the associated load balancer.
 - Show detailed information about the `rng` replica:
   <br/>(The second command doesn't require you to get the exact name of the replica set)
   ```bash
-  kubectl describe rs rng-yyyy
+  kubectl describe rs rng-yyyyyyyy
   kubectl describe rs -l run=rng
   ```
 

@@ -175,34 +175,6 @@ Note: it might take a minute or two for the app to be up and running.
 
 ---
 
-## Network policies overview
-
-- We can create as many network policies as we want
-
-- Each network policy has:
-
-  - a *pod selector*: "which pods are targeted by the policy?"
-
-  - lists of ingress and/or egress rules: "which peers and ports are allowed or blocked?"
-
-- If a pod is not targeted by any policy, traffic is allowed by default
-
-- If a pod is targeted by at least one policy, traffic must be allowed explicitly
-
----
-
-## More about network policies
-
-- This remains a high level overview of network policies
-
-- For more details, check:
-
-  - the [Kubernetes documentation about network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-
-  - this [talk about network policies at KubeCon 2017 US](https://www.youtube.com/watch?v=3gGpMmYeEO8) by [@ahmetb](https://twitter.com/ahmetb)
-
----
-
 ## Switch back to the default namespace
 
 - Let's make sure that we don't run future exercises in the `blue` namespace
@@ -220,3 +192,56 @@ Note: it might take a minute or two for the app to be up and running.
   ```
 
 ]
+
+---
+
+## Switching namespaces more easily
+
+- Defining a new context for each namespace can be cumbersome
+
+- We can also alter the current context with this one-liner:
+
+  ```bash
+  kubectl config set-context --current --namespace=foo
+  ```
+
+- We can also use a little helper tool called `kubens`:
+
+  ```bash
+  # Switch to namespace foo
+  kubens foo
+  # Switch back to the previous namespace
+  kubens -
+  ```
+
+---
+
+##  `kubens` and `kubectx`
+
+- With `kubens`, we can switch quickly between namespaces
+
+- With `kubectx`, we can switch quickly between contexts
+
+- Both tools are simple shell scripts available from https://github.com/ahmetb/kubectx
+
+- On our clusters, they are installed as `kns` and `kctx`
+
+  (for brevity and to avoid completion clashes between `kubectx` and `kubectl`)
+
+---
+
+## `kube-ps1`
+
+- It's easy to lose track of our current cluster / context / namespace
+
+- `kube-ps1` makes it easy to track these, by showing them in our shell prompt
+
+- It's a simple shell script available from https://github.com/jonmosco/kube-ps1
+
+- On our clusters, `kube-ps1` is installed and included in `PS1`:
+  ```
+  [123.45.67.89] `(kubernetes-admin@kubernetes:default)` docker@node1 ~
+  ```
+  (The highlighted part is `context:namespace`, managed by `kube-ps1`)
+
+- Highly recommended if you work across multiple contexts or namespaces!
