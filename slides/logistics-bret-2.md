@@ -3,7 +3,7 @@
 NOPE, today we use a set of AWS EC2 instances, so make sure you have ssh
 
 .small[
-  BONUS: Get my [Swarm Mastery Video Course for Free](https://www.udemy.com/docker-swarm-mastery/?couponCode=VELOCITYNYC18)
+  BONUS: Get my [Swarm Mastery Video Course for Free](https://www.udemy.com/docker-swarm-mastery/?couponCode=VELOCITYLON18)
   
 ]
 

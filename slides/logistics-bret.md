@@ -30,7 +30,7 @@
 ]
 
 .small[
-  BONUS: Get my [Docker Mastery Video Course for Free](https://www.udemy.com/docker-mastery/?couponCode=VELOCITYNYC18)
+  BONUS: Get my [Docker Mastery Video Course for Free](https://www.udemy.com/docker-mastery/?couponCode=VELOCITYLON18)
   
 ]
 
