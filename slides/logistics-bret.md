@@ -13,20 +13,19 @@
 
 2. Get this workshop repo (preferability somewhere in your user profile): 
 .small[
-    ```bash
-    git clone --depth 1 https://github.com/bretfisher/container.training.git
-    ```
+```bash
+git clone --depth 1 https://github.com/bretfisher/container.training.git
+```
 ]
 
 3. Download images you'll need:
-
 .small[
-    ```bash
-    docker pull mysql
-    docker pull jpetazzo/trainingwheels
-    docker pull python
-    docker pull ruby:2.1
-    ```
+```bash
+docker pull mysql
+docker pull jpetazzo/trainingwheels
+docker pull python
+docker pull ruby:2.1
+```
 ]
 
 .small[
