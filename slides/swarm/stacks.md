@@ -354,6 +354,10 @@ class: extra-details
 
   (But you can use `docker-compose config` to "flatten" your configuration)
 
+- There is still a way the compose file does not reflect the actual deployed stack even when you only do changes in the compose file.
+
+  When removing a service from the file you have to use the option `--prune` to also delete the service from the deployed stack `docker stack deploy --prune`.
+
 ---
 
 ## Summary
